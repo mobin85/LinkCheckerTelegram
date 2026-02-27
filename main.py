@@ -64,8 +64,10 @@ app = FastAPI(lifespan=lifespan)
 class LinkService:
     def __init__(self, bot: Client):
         self.bot = bot
+        
 
     async def check_link(self, link: str):
+        
         try:
             chat = await self.bot.get_chat(link)
             return {"detail": str(chat)}

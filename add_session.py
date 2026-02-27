@@ -50,9 +50,10 @@ api_hash = input("Enter the api_hash of the client: ")
 async def main():
     async with Client(name, api_id=api_id, api_hash=api_hash, in_memory=True) as client:
         session_string = await client.export_session_string()
+        c = await client.get_me()
     
     save_client(name, api_id, api_hash, session_string)
-    print(f"Client '{name}' added successfully!")
+    print(f"Client '{name}' with user id {c.id} added successfully!")
 
 if __name__ == '__main__':
     asyncio.run(main())
